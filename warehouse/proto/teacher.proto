@@ -1,0 +1,29 @@
+syntax = "proto3";
+package teacher;
+
+service Teacher {
+  rpc GenerateCodeAndStart(GenerateCodeAndStartRequest)
+      returns (GenerateCodeAndStartResponse) {}
+  rpc EditCountdown(EditCountdownRequest)
+      returns (EditCountdownResponse) {}
+  rpc DeleteCode(DeleteCodeRequest) returns (DeleteCodeResponse) {}
+}
+
+// ##### Request #####
+
+message GenerateCodeAndStartRequest {
+  string ip_encrypted = 1;
+  string date_time = 2;
+  string group_name = 3;
+}
+message EditCountdownRequest {
+  string code = 1;
+  string date_time = 2;
+}
+
+message DeleteCodeRequest { string code = 1; }
+
+// ##### Response #####
+message GenerateCodeAndStartResponse { string code = 1; }
+message EditCountdownResponse { string msg = 1; }
+message DeleteCodeResponse { string msg = 1; }

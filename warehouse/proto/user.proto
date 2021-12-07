@@ -1,0 +1,31 @@
+// Functionality which is shared across all users
+
+syntax = "proto3";
+package user;
+
+service User {
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+}
+
+// ##### Request #####
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string password = 2;
+  bool is_teacher = 3;
+}
+
+// ##### Response #####
+
+
+message LoginResponse { 
+    bool login_successful = 1; 
+    bool is_teacher = 2;
+}
+message CreateUserResponse { string msg = 1; }

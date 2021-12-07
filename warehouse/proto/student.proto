@@ -1,0 +1,41 @@
+syntax = "proto3";
+package student;
+
+service Student {
+  rpc CodeCheckIn(CodeCheckInRequest) returns (CodeCheckInResponse) {}
+  rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {}
+  rpc GetAllStudents(GetAllStudentsRequest) returns (GetAllStudentsResponse) {}
+}
+
+message CodeCheckInRequest {
+  string code = 1;
+  string ip = 2;
+  string username = 3;
+}
+message GetStatsRequest { string username = 1; }
+message GetAllStudentsRequest {}
+
+// ##### Response #####
+
+message CodeCheckInResponse { bool checked_in = 1; }
+
+message GetStatsResponse {
+  message Stats {
+    bool checked_in_on_time = 1;
+    string start_date_time = 2;
+    string end_date_time = 3;
+    string username = 4;
+    bool is_teacher = 5;
+  }
+  repeated Stats all_stats = 1;
+}
+
+message GetAllStudentsResponse {
+  message Stud {
+    bool is_teacher = 1;
+    string username = 2;
+    string password = 3;
+    string salt = 4;
+  }
+  repeated Stud studs = 1;
+}

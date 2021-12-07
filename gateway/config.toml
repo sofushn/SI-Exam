@@ -1,0 +1,27 @@
+[server]
+host="0.0.0.0"
+port=10000
+
+[clients]
+
+[clients.rest]
+[clients.rest.mini-proj]
+host = "rest-service"
+port = 80
+
+
+[clients.soap]
+[clients.soap.mini-proj]
+host="soap-service"
+port=80
+
+
+[clients.grpc]
+[clients.grpc.mini-proj]
+host="grpc-service"
+port=80
+
+[clients.bus]
+[clients.bus.mini-proj]
+host="bus-service"
+port=80
